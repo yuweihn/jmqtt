@@ -49,7 +49,7 @@ public class NettyRemotingServer implements RemotingService {
 
     public NettyRemotingServer(BrokerConfig brokerConfig, NettyConfig nettyConfig, ChannelEventListener listener) {
         this.nettyConfig = nettyConfig;
-        this.processorTable = new HashMap();
+        this.processorTable = new HashMap<>();
         this.brokerConfig = brokerConfig;
         this.nettyEventExecutor = new NettyEventExecutor(listener);
 
