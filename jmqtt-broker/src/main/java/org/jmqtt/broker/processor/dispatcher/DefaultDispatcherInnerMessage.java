@@ -29,7 +29,7 @@ public class DefaultDispatcherInnerMessage extends HighPerformanceMessageHandler
 
     private static final Logger log = JmqttLogger.messageTraceLog;
     private static final BlockingQueue<Message> messageQueue = new LinkedBlockingQueue<>(100000);
-    private boolean stoped = false;
+    private boolean stopped = false;
     private ThreadPoolExecutor pollThread;
     private int pollThreadNum;
     private SubscriptionMatcher subscriptionMatcher;
@@ -55,7 +55,7 @@ public class DefaultDispatcherInnerMessage extends HighPerformanceMessageHandler
 
         new Thread(() -> {
             int waitTime = 1000;
-            while (!stoped) {
+            while (!stopped) {
                 try {
                     List<Message> messageList = new ArrayList<>(32);
                     Message message;
@@ -98,7 +98,7 @@ public class DefaultDispatcherInnerMessage extends HighPerformanceMessageHandler
 
     @Override
     public void shutdown() {
-        this.stoped = true;
+        this.stopped = true;
         this.pollThread.shutdown();
     }
 
