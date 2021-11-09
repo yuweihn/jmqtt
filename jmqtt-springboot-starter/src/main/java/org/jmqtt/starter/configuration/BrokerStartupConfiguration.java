@@ -26,7 +26,8 @@ public class BrokerStartupConfiguration {
 		getProperties(brokerConfig, "jmqtt.broker.");
 		NettyConfig nettyConfig = new NettyConfig();
 		getProperties(nettyConfig, "jmqtt.netty.");
-		return new BrokerStartupService(brokerConfig, nettyConfig).getBrokerController();
+//		return new BrokerStartupService(brokerConfig, nettyConfig).getBrokerController();
+		return new BrokerController(brokerConfig, nettyConfig);
 	}
 
 	private void getProperties(Object object, String prefix){
