@@ -11,28 +11,28 @@ public class NettyConfig {
     private boolean pooledByteBufAllocatorEnable = false;
 
     /**
-     * tcp port default 1883
-     */
-    private boolean startTcp = true;
-    private int tcpPort = 1883;
-
-    /**
-     * websocket port default 1884
-     */
-    private boolean startWebsocket = true;
-    private int websocketPort = 1884;
-
-    /**
      * http port default 1881
      */
     private boolean startHttp = true;
     private int httpPort = 1881;
 
     /**
-     * tcp port with ssl default 8883
+     * tcp port default 1883
+     */
+    private boolean startTcp = true;
+    private int tcpPort = 1883;
+
+    /**
+     * tcp port with ssl default 1884
      */
     private boolean startSslTcp = true;
-    private int sslTcpPort = 8883;
+    private int sslTcpPort = 1884;
+
+    /**
+     * websocket port default 8883
+     */
+    private boolean startWebsocket = true;
+    private int websocketPort = 8883;
 
     /**
      * websocket port with ssl default 8884
