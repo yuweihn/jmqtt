@@ -8,10 +8,10 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class Producer {
     private static final String broker = "tcp://127.0.0.1:1883";
-    private static final String content = "Message from MqttProducer";
+    private static final String content = "Message from MqttProducer余威";
     private static final int qos = 1;
-    private static final String topic = "MQTT/TOPIC";
-    private static final String clientId = "MQTT_PUB_CLIENT";
+    private static final String topic = "zztopic01";
+    private static final String clientId = "1@zztest02";
 
     public static void main(String[] args) throws MqttException, InterruptedException {
         MqttClient pubClient = getMqttClient();
@@ -34,6 +34,8 @@ public class Producer {
             MqttConnectOptions connectOptions = new MqttConnectOptions();
             connectOptions.setWill("lwt", "this is a will message".getBytes(), 1, false);
             connectOptions.setCleanSession(false);
+            connectOptions.setUserName("1@zztest02");
+            connectOptions.setPassword("zztest02".toCharArray());
             System.out.println("Connecting to broker: " + broker);
             pubClient.connect(connectOptions);
             return pubClient;
