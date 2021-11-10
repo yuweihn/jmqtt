@@ -35,7 +35,7 @@ public class Producer {
             connectOptions.setWill("lwt", "this is a will message".getBytes(), 1, false);
             connectOptions.setCleanSession(false);
             connectOptions.setUserName("1@zztest02");
-            connectOptions.setPassword("zztest02".toCharArray());
+            connectOptions.setPassword("zzpassword".toCharArray());
             System.out.println("Connecting to broker: " + broker);
             pubClient.connect(connectOptions);
             return pubClient;

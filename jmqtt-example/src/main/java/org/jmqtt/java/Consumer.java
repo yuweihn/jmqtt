@@ -38,7 +38,7 @@ public class Consumer {
             MqttConnectOptions connectOptions = new MqttConnectOptions();
             connectOptions.setCleanSession(false);
             connectOptions.setUserName("1@zztest02");
-            connectOptions.setPassword("zztest02".toCharArray());
+            connectOptions.setPassword("zzpassword".toCharArray());
             System.out.println("Connecting to broker: " + broker);
             pubClient.connect(connectOptions);
             return pubClient;
