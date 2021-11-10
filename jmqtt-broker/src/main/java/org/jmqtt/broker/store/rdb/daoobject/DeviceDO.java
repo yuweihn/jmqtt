@@ -23,6 +23,8 @@ public class DeviceDO extends TenantBase implements Serializable {
      */
     private Integer isOnline;
 
+    private byte deviceStatus;
+
     private Date gmtCreate;
 
     private String latestNetworkAddress;
