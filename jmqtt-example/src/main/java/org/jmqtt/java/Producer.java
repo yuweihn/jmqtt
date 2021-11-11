@@ -7,7 +7,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class Producer {
-    private static final String broker = "tcp://127.0.0.1:1883";
+    private static final String broker = "tcp://broker-test.agilenaas.net:1883";
     private static final String content = "Message from MqttProducer000";
     private static final int qos = 1;
     private static final String topic = "zztopic01";

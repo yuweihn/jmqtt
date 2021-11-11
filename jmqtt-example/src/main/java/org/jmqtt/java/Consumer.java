@@ -4,7 +4,7 @@ import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class Consumer {
-    private static final String broker = "tcp://127.0.0.1:1883";
+    private static final String broker = "tcp://broker-test.agilenaas.net:1883";
     private static final String topic = "zztopic01";
     private static final String clientId = "1@zztest02";
 
