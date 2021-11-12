@@ -45,11 +45,8 @@ public class MixAll {
     }
 
 
-    public static boolean isEmpty(Collection collection) {
-        if (collection == null || collection.size() == 0) {
-            return true;
-        }
-        return false;
+    public static boolean isEmpty(Collection<?> collection) {
+        return collection == null || collection.size() == 0;
     }
 
     public static String getLocalIp(){
