@@ -27,7 +27,7 @@ public class MixAll {
         return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
     }
 
-    public static String dateFormater(long time) {
+    public static String dateFormat(long time) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(time);
     }
