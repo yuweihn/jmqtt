@@ -199,26 +199,16 @@ public class BrokerController {
             RequestProcessor pubAckProcessor = new PubAckProcessor(this);
             RequestProcessor pubCompProcessor = new PubCompProcessor(this);
 
-            this.remotingServer
-                .registerProcessor(MqttMessageType.CONNECT, connectProcessor, connectExecutor);
-            this.remotingServer.registerProcessor(MqttMessageType.DISCONNECT, disconnectProcessor,
-                connectExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.PINGREQ, pingProcessor, pingExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.PUBLISH, publishProcessor, pubExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.PUBACK, pubAckProcessor, pubExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.PUBREL, pubRelProcessor, pubExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.SUBSCRIBE, subscribeProcessor, subExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.UNSUBSCRIBE, unSubscribeProcessor, subExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.PUBREC, pubRecProcessor, subExecutor);
-            this.remotingServer
-                .registerProcessor(MqttMessageType.PUBCOMP, pubCompProcessor, subExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.CONNECT, connectProcessor, connectExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.DISCONNECT, disconnectProcessor, connectExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.PINGREQ, pingProcessor, pingExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.PUBLISH, publishProcessor, pubExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.PUBACK, pubAckProcessor, pubExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.PUBREL, pubRelProcessor, pubExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.SUBSCRIBE, subscribeProcessor, subExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.UNSUBSCRIBE, unSubscribeProcessor, subExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.PUBREC, pubRecProcessor, subExecutor);
+            this.remotingServer.registerProcessor(MqttMessageType.PUBCOMP, pubCompProcessor, subExecutor);
         }
 
         // 5. start auth
