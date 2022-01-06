@@ -1,5 +1,6 @@
 package org.jmqtt.mqtt.netty;
 
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
@@ -29,7 +30,6 @@ import org.jmqtt.support.remoting.RemotingService;
 import org.slf4j.Logger;
 
 
-
 public class MqttRemotingServer implements RemotingService {
 
     int coreThreadNum = Runtime.getRuntime().availableProcessors();
@@ -44,7 +44,6 @@ public class MqttRemotingServer implements RemotingService {
 
     public MqttRemotingServer(BrokerConfig brokerConfig, NettyConfig nettyConfig, BusController busController) {
         this.nettyConfig = nettyConfig;
-        this.processorTable = new HashMap<>();
         this.brokerConfig = brokerConfig;
         this.mqttConnectionFactory = new MQTTConnectionFactory(brokerConfig,busController);
 
