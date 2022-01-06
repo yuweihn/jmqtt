@@ -28,7 +28,7 @@ public class Consumer {
             }
 
         });
-        subClient.subscribe(topic,2);
+        subClient.subscribe(topic);
     }
 
 

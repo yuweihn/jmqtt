@@ -22,10 +22,10 @@
         <scala.binary.version>2.13</scala.binary.version>
     </properties>
 
-
     <dependencies>
-
         <dependency>
+            <groupId>org.jmqtt</groupId>
+            <artifactId>jmqtt-mqtt</artifactId>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
