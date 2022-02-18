@@ -27,9 +27,9 @@ public interface SubscriptionMatcher {
      */
     Set<Subscription> match(String topic);
 
-    /**
-     * 发布消息的Topic与订阅的topic是否匹配
-     */
-    boolean isMatch(String pubTopic,String subTopic);
+
+    int size();
+
+    String dumpTree();
 
 }
