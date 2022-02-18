@@ -26,7 +26,6 @@ public class Consumer {
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
                 System.out.println("deliveryComplete");
             }
-
         });
         subClient.subscribe(topic);
     }
