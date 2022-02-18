@@ -1,15 +1,23 @@
 package org.jmqtt.support.config;
 
+
 import java.io.File;
 
-public class BrokerConfig {
 
+public class BrokerConfig {
     // 配置conf文件的所在位置，logback，properties文件等所在位置
-    private String jmqttHome = System.getenv("JMQTT_HOME") != null ? System.getenv("JMQTT_HOME") : System.getProperty("user.dir") +
-            File.separator + "jmqtt-broker" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "conf";
+    private String jmqttHome = System.getenv("JMQTT_HOME") != null
+            ? System.getenv("JMQTT_HOME")
+            : System.getProperty("user.dir")
+                    + File.separator + "jmqtt"
+                    + File.separator + "jmqtt-broker"
+                    + File.separator + "src"
+                    + File.separator + "main"
+                    + File.separator + "resources"
+                    + File.separator + "conf";
     private String logLevel = "INFO";
 
-    private String  version         = "3.0.2";
+    private String  version = "3.0.2";
     private boolean anonymousEnable = true;
 
     private int pollThreadNum = Runtime.getRuntime().availableProcessors() * 2;
@@ -19,9 +27,8 @@ public class BrokerConfig {
     private int pollWaitInterval = 10;//ms
 
     /* db相关配置 */
-    private String driver   = "com.mysql.jdbc.Driver";
-    private String url
-                            = "jdbc:mysql://localhost:3306/jmqtt?characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false"
+    private String driver = "com.mysql.jdbc.Driver";
+    private String url = "jdbc:mysql://localhost:3306/jmqtt?characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false"
             + "&maxReconnects=10&useSSL=false";
     private String username = "root";
     private String password = "CallmeZ2013";
