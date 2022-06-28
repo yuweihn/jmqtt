@@ -1,6 +1,6 @@
 package org.jmqtt.bus.impl;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.jmqtt.bus.DeviceMessageManager;
 import org.jmqtt.bus.enums.ClusterEventCodeEnum;

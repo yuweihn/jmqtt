@@ -1,6 +1,6 @@
 package org.jmqtt.mqtt.event;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.google.common.eventbus.Subscribe;
 import io.netty.handler.codec.mqtt.MqttConnectReturnCode;
 import org.jmqtt.bus.DeviceMessageManager;
