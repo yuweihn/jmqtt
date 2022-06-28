@@ -1,6 +1,6 @@
 package org.jmqtt.support.helper;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.jmqtt.support.log.LogUtil;
 import org.slf4j.Logger;
 
