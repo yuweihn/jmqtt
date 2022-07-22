@@ -7,6 +7,8 @@ public class Consumer {
     private static final String broker = "tcp://broker-test.agilenaas.net:1883";
     private static final String topic = "zztopic01";
     private static final String clientId = "1@zztest02";
+    private static final String userName = "usera";
+    private static final String password = "zzpassword";
 
     public static void main(String[] args) throws MqttException {
         MqttClient subClient = getMqttClient();
@@ -36,10 +38,11 @@ public class Consumer {
             MqttClient pubClient = new MqttClient(broker, clientId, new MemoryPersistence());
             MqttConnectOptions connectOptions = new MqttConnectOptions();
             connectOptions.setCleanSession(false);
-            connectOptions.setUserName("1@zztest02");
-            connectOptions.setPassword("zzpassword".toCharArray());
+            connectOptions.setUserName(userName);
+            connectOptions.setPassword(password.toCharArray());
             System.out.println("Connecting to broker: " + broker);
             pubClient.connect(connectOptions);
+            System.out.println("Connected to broker: " + broker);
             return pubClient;
         } catch (MqttException e) {
             e.printStackTrace();
