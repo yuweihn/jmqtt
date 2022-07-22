@@ -50,7 +50,7 @@ public class BrokerStartup {
             throw new Exception("please set JMQTT_HOME.");
         }
         String jmqttConfigPath = jmqttHome + File.separator + "jmqtt.properties";
-        initConfig(jmqttConfigPath,brokerConfig,nettyConfig);
+        initConfig(jmqttConfigPath, brokerConfig, nettyConfig);
 
         // 日志配置加载
         try {
@@ -72,7 +72,7 @@ public class BrokerStartup {
         }
 
         // 启动服务，线程等
-        BrokerController brokerController = new BrokerController(brokerConfig,nettyConfig);
+        BrokerController brokerController = new BrokerController(brokerConfig, nettyConfig);
         brokerController.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
