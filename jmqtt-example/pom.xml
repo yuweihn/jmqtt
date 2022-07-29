@@ -16,13 +16,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <mqttv3.version>1.2.5</mqttv3.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.eclipse.paho</groupId>
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-            <version>1.2.5</version>
+            <version>${mqttv3.version}</version>
         </dependency>
     </dependencies>
 
