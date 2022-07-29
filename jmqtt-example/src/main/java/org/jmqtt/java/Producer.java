@@ -9,7 +9,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 
 public class Producer {
-    private static final String broker = "tcp://localhost:1883";
+    private static final String broker = "tcp://broker-test.agilenaas.net:1883";
     private static final String topic = "zztopic01";
     private static final String clientId = "2@zztest02";
     private static final String userName = "userb";
@@ -17,37 +17,32 @@ public class Producer {
     private static final String content = "Message from MqttProducer000哈哈哈2";
     private static final int qos = 1;
 
-    public static void main(String[] args) throws MqttException, InterruptedException {
-        MqttClient pubClient = getMqttClient();
+    public static void main(String[] args) throws MqttException {
+        MqttClient client = getMqttClient();
         for (int i = 0; i < 3; i++) {
-            MqttMessage mqttMessage = getMqttMessage();
-            pubClient.publish(topic, mqttMessage);
+            MqttMessage mqttMessage = getMqttMessage(content);
+            client.publish(topic, mqttMessage);
             System.out.println("Send message success.");
         }
-        pubClient.disconnect();
+        client.disconnect();
     }
 
-    private static MqttMessage getMqttMessage() {
+    private static MqttMessage getMqttMessage(String content) {
         MqttMessage mqttMessage = new MqttMessage(content.getBytes());
         mqttMessage.setQos(qos);
         return mqttMessage;
     }
 
-    private static MqttClient getMqttClient() {
-        try {
-            MqttClient pubClient = new MqttClient(broker, clientId, new MemoryPersistence());
-            MqttConnectOptions connectOptions = new MqttConnectOptions();
-            connectOptions.setWill("lwt", "this is a will message".getBytes(), 1, false);
-            connectOptions.setCleanSession(false);
-            connectOptions.setUserName(userName);
-            connectOptions.setPassword(password.toCharArray());
-            System.out.println("Connecting to broker: " + broker);
-            pubClient.connect(connectOptions);
-            System.out.println("Connected to broker: " + broker);
-            return pubClient;
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-        return null;
+    private static MqttClient getMqttClient() throws MqttException {
+        MqttClient client = new MqttClient(broker, clientId, new MemoryPersistence());
+        MqttConnectOptions opts = new MqttConnectOptions();
+        opts.setWill("lwt", "this is a will message".getBytes(), 1, false);
+        opts.setUserName(userName);
+        opts.setPassword(password.toCharArray());
+        opts.setCleanSession(false);
+        System.out.println("Connecting to broker: " + broker + ", userName: " + userName);
+        client.connect(opts);
+        System.out.println("Connected to broker: " + broker + ", userName: " + userName);
+        return client;
     }
 }
