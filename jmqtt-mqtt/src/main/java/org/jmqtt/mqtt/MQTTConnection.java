@@ -296,7 +296,7 @@ public class MQTTConnection {
             clearSession();
         }
         offline();
-        LogUtil.info(log, "[CONNECT INACTIVE] connect lost");
+        LogUtil.info(log, "[CONNECT INACTIVE] " + clientID + " connect lost");
     }
 
     public boolean createOrReopenSession(MqttConnectMessage mqttConnectMessage) {
