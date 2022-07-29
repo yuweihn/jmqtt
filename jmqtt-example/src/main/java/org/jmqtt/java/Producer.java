@@ -1,13 +1,15 @@
 package org.jmqtt.java;
 
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+
 public class Producer {
-    private static final String broker = "tcp://broker-test.agilenaas.net:1883";
+    private static final String broker = "tcp://localhost:1883";
     private static final String topic = "zztopic01";
     private static final String clientId = "2@zztest02";
     private static final String userName = "userb";

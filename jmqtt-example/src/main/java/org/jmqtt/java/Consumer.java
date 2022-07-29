@@ -1,10 +1,12 @@
 package org.jmqtt.java;
 
+
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+
 public class Consumer {
-    private static final String broker = "tcp://broker-test.agilenaas.net:1883";
+    private static final String broker = "tcp://localhost:1883";
     private static final String topic = "zztopic01";
     private static final String clientId = "1@zztest02";
     private static final String userName = "usera";
