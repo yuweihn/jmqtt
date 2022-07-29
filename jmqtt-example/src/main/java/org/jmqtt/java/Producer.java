@@ -22,6 +22,7 @@ public class Producer {
             pubClient.publish(topic, mqttMessage);
             System.out.println("Send message success.");
         }
+        pubClient.disconnect();
     }
 
     private static MqttMessage getMqttMessage() {
