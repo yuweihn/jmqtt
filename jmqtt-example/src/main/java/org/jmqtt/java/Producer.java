@@ -19,11 +19,9 @@ public class Producer {
 
     public static void main(String[] args) throws MqttException {
         MqttClient client = getMqttClient();
-        for (int i = 0; i < 3; i++) {
-            MqttMessage mqttMessage = getMqttMessage(content);
-            client.publish(topic, mqttMessage);
-            System.out.println("Send message success.");
-        }
+        MqttMessage mqttMessage = getMqttMessage(content);
+        client.publish(topic, mqttMessage);
+        System.out.println("Send message success.");
         client.disconnect();
     }
 
@@ -36,7 +34,6 @@ public class Producer {
     private static MqttClient getMqttClient() throws MqttException {
         MqttClient client = new MqttClient(broker, clientId, new MemoryPersistence());
         MqttConnectOptions opts = new MqttConnectOptions();
-        opts.setWill("lwt", "this is a will message".getBytes(), 1, false);
         opts.setUserName(userName);
         opts.setPassword(password.toCharArray());
         opts.setCleanSession(false);
