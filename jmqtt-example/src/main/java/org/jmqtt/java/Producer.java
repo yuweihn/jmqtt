@@ -10,10 +10,10 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class Producer {
     private static final String broker = "tcp://broker-test.agilenaas.net:1883";
-    private static final String topic = "zztopic01";
-    private static final String clientId = "2@zztest02";
-    private static final String userName = "userb";
-    private static final String password = "zzpassword";
+    private static final String topic = "agstopic001";
+    private static final String clientId = "we001";
+    private static final String userName = "userw";
+    private static final String password = "wpassword";
     private static final String content = "Message from MqttProducer000哈哈哈2";
     private static final int qos = 1;
 

@@ -7,10 +7,10 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class Consumer {
     private static final String broker = "tcp://broker-test.agilenaas.net:1883";
-    private static final String topic = "zztopic01";
-    private static final String clientId = "1@zztest02";
-    private static final String userName = "usera";
-    private static final String password = "zzpassword";
+    private static final String topic = "agstopic001";
+    private static final String clientId = "we";
+    private static final String userName = "we";
+    private static final String password = "";
 
     public static void main(String[] args) throws MqttException {
         MqttClient client = getMqttClient();
