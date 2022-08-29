@@ -17,7 +17,7 @@ public class Consumer {
         client.setCallback(new MqttCallback() {
             @Override
             public void connectionLost(Throwable throwable) {
-                System.out.println("Connect lost,do some thing to solve it");
+                System.out.println("Connect lost, do some thing to solve it. ");
             }
 
             @Override
