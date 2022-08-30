@@ -90,7 +90,7 @@ public class DeviceMessageManagerImpl implements DeviceMessageManager {
         List<DeviceInboxMessageDO> inboxMessageDOS =  DBUtils.operate(new DBCallback() {
             @Override
             public List<DeviceInboxMessageDO> operate(SqlSession sqlSession) {
-                return DBUtils.getMapper(sqlSession, DBUtils.clientInboxMessageMapperClass).getUnAckMessages(clientId,pageSize);
+                return DBUtils.getMapper(sqlSession, DBUtils.clientInboxMessageMapperClass).getUnAckMessages(clientId, pageSize);
             }
         });
 
@@ -109,7 +109,9 @@ public class DeviceMessageManagerImpl implements DeviceMessageManager {
         List<MessageDO> messages =  DBUtils.operate(new DBCallback() {
             @Override
             public List<MessageDO> operate(SqlSession sqlSession) {
-                return DBUtils.getMapper(sqlSession, DBUtils.messageMapperClass).queryMessageByIds(ids);
+                return ids == null || ids.size() <= 0
+                        ? new ArrayList<>()
+                        : DBUtils.getMapper(sqlSession, DBUtils.messageMapperClass).queryMessageByIds(ids);
             }
         });
 
