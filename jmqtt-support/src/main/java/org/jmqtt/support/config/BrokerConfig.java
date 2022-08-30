@@ -6,15 +6,15 @@ import java.io.File;
 
 public class BrokerConfig {
     // 配置conf文件的所在位置，logback，properties文件等所在位置
-    private String jmqttHome = System.getenv("JMQTT_HOME") != null
-            ? System.getenv("JMQTT_HOME")
-            : System.getProperty("user.dir")
-                    + File.separator + "jmqtt"
-                    + File.separator + "jmqtt-broker"
-                    + File.separator + "src"
-                    + File.separator + "main"
-                    + File.separator + "resources"
-                    + File.separator + "conf";
+//    private String jmqttHome = System.getenv("JMQTT_HOME") != null
+//            ? System.getenv("JMQTT_HOME")
+//            : System.getProperty("user.dir")
+//                    + File.separator + "jmqtt"
+//                    + File.separator + "jmqtt-broker"
+//                    + File.separator + "src"
+//                    + File.separator + "main"
+//                    + File.separator + "resources"
+//                    + File.separator + "conf";
     private String logLevel = "INFO";
 
     private String  version = "3.0.2";
@@ -41,13 +41,13 @@ public class BrokerConfig {
         this.pollThreadNum = pollThreadNum;
     }
 
-    public String getJmqttHome() {
-        return jmqttHome;
-    }
-
-    public void setJmqttHome(String jmqttHome) {
-        this.jmqttHome = jmqttHome;
-    }
+//    public String getJmqttHome() {
+//        return jmqttHome;
+//    }
+//
+//    public void setJmqttHome(String jmqttHome) {
+//        this.jmqttHome = jmqttHome;
+//    }
 
     public String getVersion() {
         return version;

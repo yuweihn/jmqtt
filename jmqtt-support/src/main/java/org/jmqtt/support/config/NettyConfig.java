@@ -1,5 +1,7 @@
 package org.jmqtt.support.config;
 
+
+
 public class NettyConfig {
     private int tcpBackLog = 1024;
     private boolean tcpNoDelay = false;
@@ -45,7 +47,8 @@ public class NettyConfig {
      */
     private boolean useClientCA = false;
     private String sslKeyStoreType = "PKCS12";
-    private String sslKeyFilePath = "/conf/server.pfx";
+//    private String sslKeyFilePath = "/conf/server.pfx";
+    private byte[] sslKeyFileContent;
     private String sslManagerPwd = "654321";
     private String sslStorePwd = "654321";
     /**
@@ -207,12 +210,20 @@ public class NettyConfig {
         this.sslKeyStoreType = sslKeyStoreType;
     }
 
-    public String getSslKeyFilePath() {
-        return sslKeyFilePath;
+//    public String getSslKeyFilePath() {
+//        return sslKeyFilePath;
+//    }
+//
+//    public void setSslKeyFilePath(String sslKeyFilePath) {
+//        this.sslKeyFilePath = sslKeyFilePath;
+//    }
+
+    public byte[] getSslKeyFileContent() {
+        return sslKeyFileContent;
     }
 
-    public void setSslKeyFilePath(String sslKeyFilePath) {
-        this.sslKeyFilePath = sslKeyFilePath;
+    public void setSslKeyFileContent(byte[] sslKeyFileContent) {
+        this.sslKeyFileContent = sslKeyFileContent;
     }
 
     public String getSslManagerPwd() {

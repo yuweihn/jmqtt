@@ -34,12 +34,12 @@ public class BrokerStartup {
 //    }
 
     public static BrokerController start(BrokerConfig brokerConfig, NettyConfig nettyConfig) throws Exception {
-        String jmqttHome = brokerConfig.getJmqttHome();
-        String logLevel = null;
-        if (StringUtils.isEmpty(jmqttHome)) {
-            throw new Exception("please set JMQTT_HOME.");
-        }
-        String jmqttConfigPath = jmqttHome + File.separator + "jmqtt.properties";
+//        String jmqttHome = brokerConfig.getJmqttHome();
+//        String logLevel = null;
+//        if (StringUtils.isEmpty(jmqttHome)) {
+//            throw new Exception("please set JMQTT_HOME.");
+//        }
+//        String jmqttConfigPath = jmqttHome + File.separator + "jmqtt.properties";
 //        initConfig(jmqttConfigPath, brokerConfig, nettyConfig);
 
 //        // 日志配置加载
@@ -58,17 +58,17 @@ public class BrokerStartup {
 //            System.err.print("Log4j2 load error,ex:" + ex);
 //        }
 
+        InputStream sslKeyStream = BrokerStartup.class.getClassLoader().getResourceAsStream("conf/server.pfx");
+        nettyConfig.setSslKeyFileContent(read(sslKeyStream));
+        if (sslKeyStream != null) {
+            sslKeyStream.close();
+        }
+
         // 启动服务，线程等
         BrokerController brokerController = new BrokerController(brokerConfig, nettyConfig);
         brokerController.start();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                brokerController.shutdown();
-            }
-        }));
-
+        Runtime.getRuntime().addShutdownHook(new Thread(brokerController::shutdown));
         return brokerController;
     }
 
@@ -87,6 +87,30 @@ public class BrokerStartup {
         options.addOption(opt);
 
         return options;
+    }
+
+    private static byte[] read(InputStream in) {
+        ByteArrayOutputStream out = null;
+        try {
+            out = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = in.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+            }
+            return out.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**

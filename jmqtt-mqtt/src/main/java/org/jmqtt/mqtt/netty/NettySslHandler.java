@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.TrustManagerFactory;
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
@@ -17,9 +18,9 @@ import java.security.KeyStore;
 public class NettySslHandler {
     private static final Logger log = JmqttLogger.remotingLog;
 
-    public static ChannelHandler getSslHandler(SocketChannel channel, boolean useClientCA, String sslKeyStoreType, String sslKeyFilePath, String sslManagerPwd, String sslStorePwd) {
-
-        SslContext sslContext = createSSLContext(useClientCA, sslKeyStoreType, sslKeyFilePath, sslManagerPwd, sslStorePwd);
+    public static ChannelHandler getSslHandler(SocketChannel channel, boolean useClientCA, String sslKeyStoreType
+            , byte[] sslKeyFileContent, String sslManagerPwd, String sslStorePwd) {
+        SslContext sslContext = createSSLContext(useClientCA, sslKeyStoreType, sslKeyFileContent, sslManagerPwd, sslStorePwd);
         SSLEngine sslEngine = sslContext.newEngine(
                 channel.alloc(),
                 channel.remoteAddress().getHostString(),
@@ -32,12 +33,12 @@ public class NettySslHandler {
         return new SslHandler(sslEngine);
     }
 
-    private static SslContext createSSLContext(boolean useClientCA, String sslKeyStoreType, String sslKeyFilePath, String sslManagerPwd, String sslStorePwd) {
+    private static SslContext createSSLContext(boolean useClientCA, String sslKeyStoreType, byte[] sslKeyFileContent
+            , String sslManagerPwd, String sslStorePwd) {
         try {
-            InputStream ksInputStream = new FileInputStream(sslKeyFilePath);
+            InputStream ksInputStream = new ByteArrayInputStream(sslKeyFileContent);
             KeyStore ks = KeyStore.getInstance(sslKeyStoreType);
             ks.load(ksInputStream, sslStorePwd.toCharArray());
-
 
             final KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             kmf.init(ks, sslManagerPwd.toCharArray());
