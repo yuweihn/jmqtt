@@ -42,21 +42,21 @@ public class BrokerStartup {
         String jmqttConfigPath = jmqttHome + File.separator + "jmqtt.properties";
 //        initConfig(jmqttConfigPath, brokerConfig, nettyConfig);
 
-        // 日志配置加载
-        try {
-            LoggerContext context = (org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-            File file = new File(jmqttHome + File.separator + "log4j2.xml");
-            context.setConfigLocation(file.toURI());
-            Configuration configuration = context.getConfiguration();
-            Map<String, LoggerConfig> loggerConfigMap = configuration.getLoggers();
-            Level newLevel = Level.INFO;
-            for (LoggerConfig value : loggerConfigMap.values()) {
-                value.setLevel(newLevel);
-            }
-            context.updateLoggers(configuration);
-        } catch (Exception ex) {
-            System.err.print("Log4j2 load error,ex:" + ex);
-        }
+//        // 日志配置加载
+//        try {
+//            LoggerContext context = (org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+//            File file = new File(jmqttHome + File.separator + "log4j2.xml");
+//            context.setConfigLocation(file.toURI());
+//            Configuration configuration = context.getConfiguration();
+//            Map<String, LoggerConfig> loggerConfigMap = configuration.getLoggers();
+//            Level newLevel = Level.INFO;
+//            for (LoggerConfig value : loggerConfigMap.values()) {
+//                value.setLevel(newLevel);
+//            }
+//            context.updateLoggers(configuration);
+//        } catch (Exception ex) {
+//            System.err.print("Log4j2 load error,ex:" + ex);
+//        }
 
         // 启动服务，线程等
         BrokerController brokerController = new BrokerController(brokerConfig, nettyConfig);
