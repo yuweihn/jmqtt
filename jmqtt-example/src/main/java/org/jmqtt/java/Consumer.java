@@ -17,7 +17,7 @@ import java.security.cert.CertificateFactory;
 public class Consumer {
     private static final String broker = "ssl://localhost:1884";
     private static final String topic = "agstopic001";
-    private static final String clientId = "we";
+//    private static final String clientId = "we";
     private static final String userName = "we";
     private static final String password = "654321";
 
@@ -44,7 +44,7 @@ public class Consumer {
 
 
     private static MqttClient getMqttClient() throws MqttException {
-        MqttClient client = new MqttClient(broker, clientId, new MemoryPersistence());
+        MqttClient client = new MqttClient(broker, MqttClient.generateClientId(), new MemoryPersistence());
         MqttConnectOptions opts = new MqttConnectOptions();
         opts.setUserName(userName);
         opts.setPassword(password.toCharArray());
