@@ -8,7 +8,6 @@ import javax.net.SocketFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
@@ -49,6 +48,7 @@ public class Consumer {
         MqttConnectOptions opts = new MqttConnectOptions();
         opts.setUserName(userName);
         opts.setPassword(password.toCharArray());
+        opts.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
         opts.setCleanSession(false);
         opts.setConnectionTimeout(0);
         opts.setAutomaticReconnect(true);
