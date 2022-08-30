@@ -64,7 +64,7 @@ public class Consumer {
         try {
             sslKeyStream = Consumer.class.getClassLoader().getResourceAsStream("client.cer");
             KeyStore trustStore = KeyStore.getInstance("PKCS12");
-            trustStore.load(null, "654321".toCharArray());
+            trustStore.load(null, password.toCharArray());
             trustStore.setCertificateEntry("Custom CA", CertificateFactory.getInstance("X509").generateCertificate(sslKeyStream));
 
             TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
