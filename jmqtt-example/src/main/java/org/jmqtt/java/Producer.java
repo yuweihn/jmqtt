@@ -34,12 +34,12 @@ public class Producer {
     private static MqttClient getMqttClient() throws MqttException {
         MqttClient client = new MqttClient(broker, clientId, new MemoryPersistence());
         MqttConnectOptions opts = new MqttConnectOptions();
-        opts.setUserName(userName);
-        opts.setPassword(password.toCharArray());
+//        opts.setUserName(userName);
+//        opts.setPassword(password.toCharArray());
         opts.setCleanSession(false);
-        System.out.println("Connecting to broker: " + broker + ", userName: " + userName);
+        System.out.println("Connecting to broker: " + broker + ", ClientId: " + clientId);
         client.connect(opts);
-        System.out.println("Connected to broker: " + broker + ", userName: " + userName);
+        System.out.println("Connected to broker: " + broker + ", ClientId: " + clientId);
         return client;
     }
 }
