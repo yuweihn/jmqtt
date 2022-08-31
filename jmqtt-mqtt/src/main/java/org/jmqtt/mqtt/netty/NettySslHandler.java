@@ -1,5 +1,6 @@
 package org.jmqtt.mqtt.netty;
 
+
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.ssl.*;
@@ -11,9 +12,9 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.TrustManagerFactory;
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
+
 
 public class NettySslHandler {
     private static final Logger log = JmqttLogger.remotingLog;
