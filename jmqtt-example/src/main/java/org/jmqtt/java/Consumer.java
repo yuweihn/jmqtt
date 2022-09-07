@@ -21,8 +21,8 @@ public class Consumer {
             }
 
             @Override
-            public void messageArrived(String s, MqttMessage msg) {
-                System.out.println("From topic: " + s + ". Message content: " + new String(msg.getPayload()));
+            public void messageArrived(String topic, MqttMessage msg) {
+                System.out.println("From topic: " + topic + ". Message content: " + new String(msg.getPayload()));
             }
 
             @Override
