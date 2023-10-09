@@ -6,6 +6,7 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.mqtt.MqttMessage;
+import io.netty.handler.codec.mqtt.MqttMessageType;
 import org.jmqtt.mqtt.MQTTConnection;
 import org.jmqtt.mqtt.MQTTConnectionFactory;
 import org.jmqtt.support.log.JmqttLogger;
@@ -26,12 +27,14 @@ public class NettyMqttHandler extends ChannelDuplexHandler {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object message) throws Exception {
-        MqttMessage msg = MqttNettyUtils.validateMessage(message);
-        final MQTTConnection mqttConnection = MqttNettyUtils.mqttConnection(ctx.channel());
+        MqttMessageType messageType = null;
         try {
-            mqttConnection.processProtocol(ctx,msg);
+            MqttMessage msg = MqttNettyUtils.validateMessage(message);
+            messageType = msg.fixedHeader().messageType();
+            final MQTTConnection mqttConnection = MqttNettyUtils.mqttConnection(ctx.channel());
+            mqttConnection.processProtocol(ctx, msg);
         } catch (Throwable ex) {
-            LogUtil.error(log,"Error processing protocol message: {}", msg.fixedHeader().messageType(), ex);
+            LogUtil.error(log,"Error processing protocol message: {}", messageType, ex);
             ctx.channel().close().addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future) {
