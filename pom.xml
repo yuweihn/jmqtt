@@ -9,10 +9,12 @@
         <version>2.4.2</version>
         <relativePath/>
     </parent>
+
     <groupId>org.jmqtt</groupId>
     <artifactId>jmqtt</artifactId>
     <packaging>pom</packaging>
     <version>3.0.0</version>
+
     <modules>
         <module>jmqtt-broker</module>
         <module>jmqtt-example</module>
